@@ -140,17 +140,35 @@ for (let i = 0; i < counterLinkes.length; i++) {
     const counter = {
         btn: btnid,
         like: likesid,
-        function(){
+        addLike() {
+            let arrow = () => {console.log(this.btn)
             this.btn.addEventListener('click',function(){
-                close.log(this)
+                console.log(counter.like)
+                //il numero di like è il testo dentro a counter.like poichè 'like'è un elemento HTML
+                let numbLike = counter.like.textContent
+                numbLike++
+                //associo  il numero incrementato al vecchio valore 
+                counter.like.textContent = numbLike
+                console.log(numbLike)
             })
+            };
+            arrow();
         }
+        };
+        countetrList.push(counter)
     }
-    countetrList.push(counter)
-}
+    
+
 
 console.log(countetrList)
 
+// countetrList[0].btn.addEventListener('click',stampa)
+countetrList[0].addLike()
+countetrList[1].addLike()
+countetrList[2].addLike()
+countetrList[3].addLike()
+countetrList[4].addLike()
+countetrList[5].addLike()
 
 
 // const btnLike = document.querySelector('.like-button')
