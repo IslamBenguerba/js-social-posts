@@ -133,6 +133,7 @@ function stampa(){
 const btnLikeS = document.querySelectorAll('.like-button')
 const counterLinkes = document.querySelectorAll('.js-likes-counter')
 const countetrList = []
+
 for (let i = 0; i < counterLinkes.length; i++) {
     let btnid = btnLikeS[i]
     let likesid = counterLinkes[i]
@@ -140,20 +141,33 @@ for (let i = 0; i < counterLinkes.length; i++) {
     const counter = {
         btn: btnid,
         like: likesid,
+        validator: 0,
         addLike() {
             let arrow = () => {console.log(this.btn)
             this.btn.addEventListener('click',function(){
                 console.log(counter.like)
-                //il numero di like è il testo dentro a counter.like poichè 'like'è un elemento HTML
+                console.log() 
                 let numbLike = counter.like.textContent
-                numbLike++
-                //associo  il numero incrementato al vecchio valore 
+                if(counter.validator ===0){
+                    //il numero di like è il testo dentro a counter.like poichè 'like'è un elemento HTML
+                    numbLike++
+                    counter.validator =1
+                    btnid.classList.add('like-button--liked')
+                    //associo  il numero incrementato al vecchio valore
+                }else{
+                    numbLike--
+                    counter.validator = 0
+                    btnid.classList.remove('like-button--liked')
+                }
+                
+                
+               
                 counter.like.textContent = numbLike
                 console.log(numbLike)
             })
             };
             arrow();
-        }
+        },
         };
         countetrList.push(counter)
     }
