@@ -85,19 +85,41 @@ const listaposts = [
         },
         "likes": 95,
         "created": "2021-03-05"
+    },
+    {
+        "id": 6,
+        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+        "media": "https://unsplash.it/600/400?image=534",
+        "author": {
+            "name": "Alessandro Sainato",
+            "image": null
+        },
+        "likes": 46,
+        "created": "2021-03-05"
     }
 ];
-
+let noImage =""
+let iniziali=""
 function appendPost() {
     for (let i = 0; i < listaposts.length; i++) {
         let newPost = listaposts[i]
+        if(newPost.author['image']===null){
+            noImage = "profile-pic-default"
+            let nomeAutore = newPost['author']['name']
+            nomeAutore = nomeAutore.split(' ')
+            console.log(nomeAutore)
+            iniziali = `${nomeAutore[0][0]} ${nomeAutore[1][0]}`
+            console.log(iniziali)
+            // newPost['author']['image'] = iniziali
+        }
 
         mainContainer.innerHTML += `
     <div class="post">
         <div class="post__header">
             <div class="post-meta">                    
-                <div class="post-meta__icon">
-                    <img class="profile-pic" src="${newPost['author']['image']}" alt="Phil Mangione">                    
+                <div class="post-meta__icon ${noImage}">
+                    <span>${iniziali}</span>
+                    <img class="profile-pic" src="${newPost['author']['image']}" alt="Pe">                    
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${newPost['author']['name']}</div>
@@ -127,6 +149,7 @@ function appendPost() {
 
 }
 appendPost();
+console.log(listaposts)
 function stampa(){
     console.log('ciao')
 }
@@ -161,7 +184,6 @@ for (let i = 0; i < counterLinkes.length; i++) {
                 }
                 
                 
-               
                 counter.like.textContent = numbLike
                 console.log(numbLike)
             })
