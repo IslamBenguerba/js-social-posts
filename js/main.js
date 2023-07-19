@@ -99,9 +99,10 @@ const listaposts = [
     }
 ];
 let noImage =""
-let iniziali=""
+
 function appendPost() {
     for (let i = 0; i < listaposts.length; i++) {
+        let iniziali=``
         let newPost = listaposts[i]
         if(newPost.author['image']===null){
             noImage = "profile-pic-default"
@@ -119,7 +120,7 @@ function appendPost() {
             <div class="post-meta">                    
                 <div class="post-meta__icon ${noImage}">
                     <span>${iniziali}</span>
-                    <img class="profile-pic" src="${newPost['author']['image']}" alt="Pe">                    
+                    <img class="profile-pic" src="${newPost['author']['image']}" alt="">                    
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${newPost['author']['name']}</div>
@@ -134,7 +135,7 @@ function appendPost() {
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <a class="like-button  js-like-button" href="#0" data-postid="1">
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
@@ -191,20 +192,21 @@ for (let i = 0; i < counterLinkes.length; i++) {
             arrow();
         },
         };
-        countetrList.push(counter)
-    }
+    countetrList.push(counter)
+    counter.addLike()
+}
     
 
 
 console.log(countetrList)
 
 // countetrList[0].btn.addEventListener('click',stampa)
-countetrList[0].addLike()
-countetrList[1].addLike()
-countetrList[2].addLike()
-countetrList[3].addLike()
-countetrList[4].addLike()
-countetrList[5].addLike()
+// countetrList[0].addLike()
+// countetrList[1].addLike()
+// countetrList[2].addLike()
+// countetrList[3].addLike()
+// countetrList[4].addLike()
+// countetrList[5].addLike()
 
 
 // const btnLike = document.querySelector('.like-button')
